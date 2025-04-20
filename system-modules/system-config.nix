@@ -48,11 +48,10 @@
 
   # Конфигурация Pipewire
   services.pipewire = {
-      enable = true;
-      alsa.enable = true;
-      pulse.enable = true;
-      jack.enable = false;
-    };
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+    jack.enable = false;
   };
 
   # Настройки безопасности и групп пользователей

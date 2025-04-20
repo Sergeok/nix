@@ -11,7 +11,7 @@
 
   outputs = { self, nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
-      hostname = nixpkgs.lib.nixosSystem {
+      sergeok = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./system-modules/system-config.nix
@@ -21,7 +21,7 @@
     };
 
     homeConfigurations = {
-      "sergeok@hostname" = home-manager.lib.homeManagerConfiguration {
+      sergeok = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
         modules = [
           ./home.nix
