@@ -16,6 +16,8 @@
         modules = [
           ./system-modules/system-config.nix
           ./system-modules/system-packages.nix
+          ./system-modules/boot.nix
+		  ./hardware-sergeok.nix
         ];
       };
     };
@@ -24,7 +26,7 @@
       sergeok = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
         modules = [
-          ./home.nix
+          ./home-modules/home.nix
           ./home-modules/theme.nix
           ./home-modules/home-config.nix
           ./home-modules/home-packages.nix

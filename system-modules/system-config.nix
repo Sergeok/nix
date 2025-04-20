@@ -53,6 +53,21 @@
     pulse.enable = true;
     jack.enable = false;
   };
+  
+  # Flatpak конфигурация
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+  # ZSH конфигурация
+  programs.zsh = {
+    enable = true;
+#    oh-my-zsh.enable = true;
+    shellAliases = {
+      ll = "ls -l";
+      gs = "git status";
+    };
+  };
 
   # Настройки безопасности и групп пользователей
   users.users.sergeok = {

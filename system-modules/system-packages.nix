@@ -45,17 +45,4 @@
     # Поддержка Android-приложений на уровне контейнеров
     waydroid
   ];
-
-  # Flatpak конфигурация
-  services.flatpak.enable = true;
-
-  # Flatpak приложения
-  services.flatpak.packages = [
-    # Список Flatpak приложений (пока пусто)
-  ];
-
-  # Flatpak Overrides (переопределения)
-  services.flatpak.overrides = {
-    # Настройки переопределений Flatpak (пока пусто)
-  };
 }

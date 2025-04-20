@@ -51,13 +51,4 @@
   home.activation.fontCache = pkgs.lib.mkForce ''
     ${pkgs.fontconfig}/bin/fc-cache -fv
   '';
-  
-  programs.zsh = {
-    enable = true;
-#    oh-my-zsh.enable = true;
-    shellAliases = {
-      ll = "ls -l";
-      gs = "git status";
-    };
-  };
 }
