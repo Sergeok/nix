@@ -18,18 +18,6 @@
     ATTR{idVendor}=="046d", ATTR{idProduct}=="082d", GROUP="video", MODE="0660"
   '';
 
-  # Настройки X-сервера и дисплейного менеджера (через home-manager)
-  services.xserver = {
-    enable = true;
-    displayManager.lightdm.enable = true;
-    windowManager.i3.enable = false; # важно, чтобы не было конфликта с home-manager
-	xkb = {
-      layout = "us,ru";
-      variant = ",";
-      options = "grp:alt_shift_toggle";
-    };
-  };
-
 
   # Конфигурация Pipewire
   services.pipewire = {

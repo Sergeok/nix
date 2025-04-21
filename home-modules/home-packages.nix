@@ -2,8 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    xbindkeys
-  
     # GUI-приложения и утилиты
     firefox
     chromium
@@ -16,11 +14,6 @@
 
     # Rice (персонализация окружения)
     kitty
-    feh
-    rofi
-    picom
-    dunst
-    polybar
 
     # Терминальные утилиты и украшения
     fastfetch

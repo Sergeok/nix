@@ -4,7 +4,6 @@
   environment.systemPackages = with pkgs; [
 
     zsh
-	xorg.xinit
 	i3-gaps
 	xdg-desktop-portal
 	xdg-desktop-portal-gtk
@@ -30,7 +29,6 @@
     fd
     tree
     glxinfo
-    pkgs.xorg.xrandr
     wl-clipboard
 
     # Мониторинг и диагностика на системном уровне
