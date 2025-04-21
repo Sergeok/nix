@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  system.configurationName = "sergeok";
+
   # Настройки локализации
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -10,19 +12,6 @@
   # Раскладка клавиатуры в консоли
   console.keyMap = "us";
 
-  # Настройки оборудования (Nvidia)
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware = {
-    nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      modesetting.enable = true;
-      powerManagement.enable = true;
-      open = false;
-      nvidiaSettings = true;
-      forceFullCompositionPipeline = true;
-    };
-  };
-  
   # Поддержка камеры Logitech (Logitech C920/схожая)
   hardware.uinput.enable = true;
   services.udev.extraRules = ''
@@ -32,7 +21,7 @@
   # Автозапуск служб, D-Bus
   services.dbus.enable = true;
   programs.dconf.enable = true;
-  
+
   # Настройки X-сервера и дисплейного менеджера (через home-manager)
   services.xserver = {
     enable = true;
@@ -53,11 +42,18 @@
     pulse.enable = true;
     jack.enable = false;
   };
-  
+
   # Flatpak конфигурация
   services.flatpak.enable = true;
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal = {
+    enable = true;
+    config = {
+      common = {
+        default = "gtk";
+      };
+    };
+    configPackages = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 
   # ZSH конфигурация
   programs.zsh = {
@@ -74,8 +70,11 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "docker" ];
     shell = pkgs.zsh;
+	initialPassword = "sergeok";
   };
 
   security.sudo.enable = true;
   security.sudo.wheelNeedsPassword = false;
+  security.polkit.enable = true;
+  services.dbus.enable = true;
 }

@@ -19,7 +19,6 @@
     picom
     dunst
     polybar
-    i3-gaps
 
     # Терминальные утилиты и украшения
     fastfetch

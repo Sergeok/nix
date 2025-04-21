@@ -1,8 +1,13 @@
-boot.loader = {
-  grub.enable = true;
-  grub.device = "nodev";  # если UEFI
-  grub.efiSupport = true;
-  efi.supported = true;
-  efi.efiSysMountPoint = "/boot";
-  grub.useOSProber = true;
-};
+{ config, pkgs, ... }:
+
+{
+  boot.loader = {
+    grub = {
+      enable = true;
+      device = "nodev";  # если UEFI
+      efiSupport = true;
+      useOSProber = true;
+    };
+    efi.efiSysMountPoint = "/boot";
+  };
+}

@@ -5,6 +5,7 @@
 
     zsh
 	xorg.xinit
+	i3-gaps
   
     # Управление системой и правами
     sudo
@@ -15,7 +16,7 @@
 	lazydocker
 
     # Утилиты для работы с оборудованием и системой
-    nvidia-settings
+    config.boot.kernelPackages.nvidiaPackages.latest.settings
     smartmontools    # предоставляет smartctl (диагностика дисков)
     networkmanagerapplet   # управление сетями на системном уровне (Wi-Fi GUI)
 
@@ -27,7 +28,7 @@
     fd
     tree
     glxinfo
-    xrandr
+    pkgs.xorg.xrandr
     wl-clipboard
 
     # Мониторинг и диагностика на системном уровне
