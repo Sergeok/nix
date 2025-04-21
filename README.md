@@ -31,7 +31,6 @@ nix-shell -p git
 nix run nixpkgs#git -- clone https://github.com/your/repo.git
 git clone https://github.com/Sergeok/nix.git /mnt/etc/nixos
 cd /mnt/etc/nixos
-rm -r .git
 ```
 
 ## Step 4: Generate Hardware Configuration
@@ -47,4 +46,14 @@ cp /mnt/etc/nixos/hardware-configuration.nix /mnt/etc/nixos/system-modules/hardw
 nixos-install --flake .#sergeok
 ```
 
-After reboot, your fully customized NixOS will be ready.
+## Step 6: Reboot
+```sh
+reboot
+```
+
+## Step 7: Set up user using the home-manager
+
+```sh
+login sergeok
+nix run github:nix-community/home-manager -- switch --flake /etc/nixos#sergeok
+```

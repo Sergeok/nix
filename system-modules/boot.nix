@@ -7,5 +7,5 @@
     efiSupport = true;
     useOSProber = true;
   };
-  boot.loaderefi.efiSysMountPoint = "/boot";
+  boot.loader.efi.efiSysMountPoint = "/boot";
 }

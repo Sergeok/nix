@@ -2,6 +2,8 @@
 
 {
   home.packages = with pkgs; [
+    xbindkeys
+  
     # GUI-приложения и утилиты
     firefox
     chromium

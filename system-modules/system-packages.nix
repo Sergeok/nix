@@ -6,6 +6,8 @@
     zsh
 	xorg.xinit
 	i3-gaps
+	xdg-desktop-portal
+	xdg-desktop-portal-gtk
   
     # Управление системой и правами
     sudo

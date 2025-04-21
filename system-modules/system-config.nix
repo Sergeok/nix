@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  system.configurationName = "sergeok";
+  system.stateVersion = "24.11";
 
   # Настройки локализации
   i18n.defaultLocale = "en_US.UTF-8";
@@ -17,10 +17,6 @@
   services.udev.extraRules = ''
     ATTR{idVendor}=="046d", ATTR{idProduct}=="082d", GROUP="video", MODE="0660"
   '';
-
-  # Автозапуск служб, D-Bus
-  services.dbus.enable = true;
-  programs.dconf.enable = true;
 
   # Настройки X-сервера и дисплейного менеджера (через home-manager)
   services.xserver = {
@@ -52,7 +48,7 @@
         default = "gtk";
       };
     };
-    configPackages = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   # ZSH конфигурация
@@ -72,9 +68,11 @@
     shell = pkgs.zsh;
 	initialPassword = "sergeok";
   };
-
-  security.sudo.enable = true;
   security.sudo.wheelNeedsPassword = false;
+
+  # Автозапуск служб
+  programs.dconf.enable = true;
+  security.sudo.enable = true;
   security.polkit.enable = true;
   services.dbus.enable = true;
 }
