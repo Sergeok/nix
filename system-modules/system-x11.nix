@@ -10,7 +10,6 @@
   services.xserver = {
     enable = true;
     displayManager.lightdm.enable = true;
-    displayManager.defaultSession = "none+i3";
     windowManager.i3.enable = true;
 	xkb = {
       layout = "us,ru";
@@ -18,6 +17,8 @@
       options = "grp:alt_shift_toggle";
     };
   };
+  services.displayManager.defaultSession = "none+i3";
+  services.displayManager.sessionPackages = [ pkgs.i3-gaps ];
   
   services.xserver.videoDrivers = [ "nvidia" ]; # не нравится, что завязываемся на nvidia, вынести?
 }
