@@ -9,7 +9,7 @@
   # Настройки X-сервера и дисплейного менеджера (через home-manager)
   services.xserver = {
     enable = true;
-    displayManager.lightdm.enable = true;
+    #displayManager.lightdm.enable = true;
     windowManager.i3.enable = true;
 	xkb = {
       layout = "us,ru";
@@ -20,5 +20,5 @@
   services.xserver.windowManager.i3.package = pkgs.i3-gaps;
   services.displayManager.defaultSession = "none+i3";
   
-  services.xserver.videoDrivers = [ "nvidia" ]; # не нравится, что завязываемся на nvidia, вынести?
+  services.xserver.videoDrivers = [ "vmware" ]; # не нравится, что завязываемся на nvidia, вынести?
 }
