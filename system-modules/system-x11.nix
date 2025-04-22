@@ -10,7 +10,7 @@
   services.xserver = {
     enable = true;
     displayManager.lightdm.enable = true;
-    displayManager.defaultSession = "i3";
+    displayManager.defaultSession = "none+i3";
     windowManager.i3.enable = true;
 	xkb = {
       layout = "us,ru";
