@@ -2,12 +2,13 @@
 
 {
   home.packages = with pkgs; [
-	xbindkeys
-	feh
-	picom
+    xbindkeys
+    feh
+    picom
     dunst
     polybar
-	rofi
+    rofi
+    scrot
   ];
 
   home.file.".xbindkeysrc".text = ''
@@ -16,6 +17,10 @@
 
     "scrot -s ~/Pictures/screenshot-%Y-%m-%d_%H:%M:%S.png"
         Print
+  '';
+
+  home.file.".xinitrc".text = ''
+    exec i3
   '';
 
   xdg.configFile."i3/config".text = ''

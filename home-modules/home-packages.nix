@@ -18,7 +18,6 @@
     # Терминальные утилиты и украшения
     fastfetch
     cava
-    scrot
     pipes
     tty-clock
 
