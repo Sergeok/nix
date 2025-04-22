@@ -9,9 +9,17 @@
   # Настройки X-сервера и дисплейного менеджера (через home-manager)
   services.xserver = {
     enable = true;
-    displayManager.lightdm = {
-      enable = true;
-      greeters.gtk.enable = true;
+    displayManager = {
+      lightdm = {
+        enable = true;
+        greeters.gtk.enable = true;
+      };
+
+      sessionPackages = [
+        (pkgs.i3-gaps.overrideAttrs (old: {
+          passthru.providedSessions = [ "i3" ];
+        }))
+      ];
     };
     windowManager.i3.enable = true;
 	xkb = {
