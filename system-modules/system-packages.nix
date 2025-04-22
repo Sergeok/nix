@@ -2,9 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-
     zsh
-	i3-gaps
 	xdg-desktop-portal
 	xdg-desktop-portal-gtk
   

@@ -8,8 +8,6 @@
     package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
-
   environment.systemPackages = [
     config.boot.kernelPackages.nvidiaPackages.latest.settings
   ];

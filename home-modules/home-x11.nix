@@ -10,37 +10,20 @@
 	rofi
   ];
 
-  home.file = {
-    ".xbindkeysrc".text = ''
-      "scrot ~/Pictures/screenshot-%Y-%m-%d_%H:%M:%S.png"
-          Alt + Print
+  home.file.".xbindkeysrc".text = ''
+    "scrot ~/Pictures/screenshot-%Y-%m-%d_%H:%M:%S.png"
+        Alt + Print
 
-      "scrot -s ~/Pictures/screenshot-%Y-%m-%d_%H:%M:%S.png"
-          Print
-    '';
+    "scrot -s ~/Pictures/screenshot-%Y-%m-%d_%H:%M:%S.png"
+        Print
+  '';
 
-	".xsession" = {
-	  text = ''
-        exec ~/.hm-xsession
-      '';
-	  executable = true;
-    };
-  };
-  
-  # i3 startup commands
-  xsession = {
-    enable = true;
-    windowManager.i3 = {
-      enable = true;
-      package = pkgs.i3-gaps;
-      config.startup = [
-        { command = "feh --bg-fill ~/.wallpaper/wallpaper.png"; always = true; }
-        { command = "dunst"; always = true; }
-        { command = "picom --config ~/.config/picom/picom.conf"; always = true; }
-        { command = "nm-applet"; always = true; }
-        { command = "polybar main"; always = true; }
-        { command = "xbindkeys"; always = true; }
-      ];
-    };
-  };
+  xdg.configFile."i3/config".text = ''
+    exec --no-startup-id feh --bg-fill ~/.wallpaper/wallpaper.png
+    exec --no-startup-id dunst
+    exec --no-startup-id picom --config ~/.config/picom/picom.conf
+    exec --no-startup-id nm-applet
+    exec --no-startup-id polybar main
+    exec --no-startup-id xbindkeys
+  '';
 }
