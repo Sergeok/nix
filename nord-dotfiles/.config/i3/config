@@ -1,6 +1,21 @@
-# i3 config (только тема/внешний вид)
+# i3 config
 
 set $mod Mod4
+
+# --- AUTOSTART ---
+exec --no-startup-id feh --bg-fill ~/.wallpaper/wallpaper.png
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id dunst
+exec --no-startup-id nm-applet
+exec --no-startup-id xbindkeys
+exec --no-startup-id polybar main
+
+# --- KEYBINDS ---
+bindsym $mod+Return exec alacritty
+bindsym $mod+d exec rofi -show run
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+r restart
+bindsym $mod+f fullscreen toggle
 
 # --- GAPS SETTINGS ---
 default_border pixel 3
@@ -19,18 +34,3 @@ client.background       #ffffff
 # --- FONT ---
 font pango:monospace 8
 # font pango:DejaVu Sans Mono 8  # альтернативный вариант
-
-# --- AUTOSTART ---
-exec --no-startup-id feh --bg-fill ~/.wallpaper/wallpaper.png
-exec --no-startup-id picom --config ~/.config/picom/picom.conf
-exec --no-startup-id dunst
-exec --no-startup-id nm-applet
-exec --no-startup-id xbindkeys
-exec --no-startup-id polybar main
-
-# --- KEYBINDS ---
-bindsym $mod+Return exec alacritty
-bindsym $mod+d exec rofi -show run
-bindsym $mod+Shift+q kill
-bindsym $mod+Shift+r restart
-bindsym $mod+f fullscreen toggle
