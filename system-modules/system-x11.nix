@@ -13,12 +13,6 @@
         enable = true;
         greeters.gtk.enable = true;
       };
-
-      sessionPackages = [
-        (pkgs.i3-gaps.overrideAttrs (old: {
-          passthru.providedSessions = [ "i3" ];
-        }))
-      ];
     };
     windowManager.i3.enable = true;
 	xkb = {
