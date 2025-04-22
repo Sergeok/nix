@@ -28,7 +28,6 @@ mount /dev/sdX1 /mnt/boot
 
 ```sh
 nix-shell -p git
-nix run nixpkgs#git -- clone https://github.com/your/repo.git
 git clone https://github.com/Sergeok/nix.git /mnt/etc/nixos
 cd /mnt/etc/nixos
 ```
@@ -37,7 +36,7 @@ cd /mnt/etc/nixos
 
 ```sh
 nixos-generate-config --root /mnt
-cp /mnt/etc/nixos/hardware-configuration.nix /mnt/etc/nixos/system-modules/hardware-laptop.nix
+cp /mnt/etc/nixos/hardware-configuration.nix /mnt/etc/nixos/hardware-modules/hardware-sergeok.nix
 ```
 
 ## Step 5: Install the System using the flake
@@ -55,5 +54,7 @@ reboot
 
 ```sh
 login sergeok
+cd /mnt/etc/nixos
+sudo chown -R sergeok .
 nix run github:nix-community/home-manager -- switch --flake /etc/nixos#sergeok
 ```
