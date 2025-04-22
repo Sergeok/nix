@@ -18,7 +18,6 @@
     };
   };
   services.displayManager.defaultSession = "none+i3";
-  services.displayManager.sessionPackages = [ pkgs.i3-gaps ];
   
   services.xserver.videoDrivers = [ "nvidia" ]; # не нравится, что завязываемся на nvidia, вынести?
 }
