@@ -19,3 +19,11 @@ client.background       #ffffff
 # --- FONT ---
 font pango:monospace 8
 # font pango:DejaVu Sans Mono 8  # альтернативный вариант
+
+# --- AUTOSTART ---
+exec --no-startup-id feh --bg-fill ~/.wallpaper/wallpaper.png
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id dunst
+exec --no-startup-id nm-applet
+exec --no-startup-id xbindkeys
+exec --no-startup-id polybar main
