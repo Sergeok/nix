@@ -2,7 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    i3-gaps
     xorg.xrandr
   ];
   
