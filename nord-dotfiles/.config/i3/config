@@ -27,3 +27,10 @@ exec --no-startup-id dunst
 exec --no-startup-id nm-applet
 exec --no-startup-id xbindkeys
 exec --no-startup-id polybar main
+
+# --- KEYBINDS ---
+bindsym $mod+Return exec alacritty
+bindsym $mod+d exec rofi -show run
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+r restart
+bindsym $mod+f fullscreen toggle

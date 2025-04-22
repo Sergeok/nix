@@ -8,12 +8,10 @@
   # Настройки X-сервера и дисплейного менеджера (через home-manager)
   services.xserver = {
     enable = true;
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        i3lock
-      ];
+    displayManager = {
+      lightdm.enable = true;
     };
+    windowManager.i3.enable = true;
 	xkb = {
       layout = "us,ru";
       variant = ",";
