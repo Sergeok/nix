@@ -17,6 +17,7 @@
       options = "grp:alt_shift_toggle";
     };
   };
+  services.xserver.windowManager.i3.package = pkgs.i3-gaps;
   services.displayManager.defaultSession = "none+i3";
   
   services.xserver.videoDrivers = [ "nvidia" ]; # не нравится, что завязываемся на nvidia, вынести?
