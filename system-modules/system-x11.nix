@@ -10,8 +10,8 @@
     enable = true;
     displayManager = {
       lightdm = {
-        enable = true;
-        greeters.gtk.enable = true;
+        enable = false;
+        greeters.gtk.enable = false;
       };
     };
     windowManager.i3.enable = true;
