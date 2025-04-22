@@ -8,13 +8,12 @@
   # Настройки X-сервера и дисплейного менеджера (через home-manager)
   services.xserver = {
     enable = true;
-    displayManager = {
-      lightdm = {
-        enable = false;
-        greeters.gtk.enable = false;
-      };
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        i3lock
+      ];
     };
-    windowManager.i3.enable = true;
 	xkb = {
       layout = "us,ru";
       variant = ",";
