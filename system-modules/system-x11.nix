@@ -9,7 +9,7 @@
   # Настройки X-сервера и дисплейного менеджера (через home-manager)
   services.xserver = {
     enable = true;
-    #displayManager.lightdm.enable = true;
+    displayManager.lightdm.enable = true;
     windowManager.i3.enable = true;
 	xkb = {
       layout = "us,ru";
