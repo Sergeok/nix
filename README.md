@@ -37,6 +37,7 @@ cd /mnt/etc/nixos
 ```sh
 nixos-generate-config --root /mnt
 cp /mnt/etc/nixos/hardware-configuration.nix /mnt/etc/nixos/hardware-modules/hardware-sergeok.nix
+git add .
 ```
 
 ## Step 5: Install the System using the flake

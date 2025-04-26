@@ -24,7 +24,13 @@
             ./system-modules/system-x11.nix
 
 		    ./hardware-modules/hardware-sergeok.nix
-		    ./hardware-modules/nvidia.nix
+			
+			# X11 + NVIDIA
+		    #./hardware-modules/nvidia.nix
+		    #./system-modules/system-x11-nvidia.nix
+			
+			# X11 + AMD
+			./system-modules/system-x11-amd.nix
           ];
         };
       };
