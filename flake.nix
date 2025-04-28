@@ -1,6 +1,4 @@
 {
-  description = "Nord-themed dotfiles using Home Manager and Nix flakes";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     home-manager = {
@@ -26,14 +24,14 @@
             ./hardware-modules/hardware-sergeok.nix
             
             # X11 + NVIDIA
-#            ./hardware-modules/nvidia.nix
-#            ./system-modules/system-x11-nvidia.nix
+            ./hardware-modules/nvidia.nix
+            ./system-modules/system-x11-nvidia.nix
             
             # X11 + AMD
 #            ./system-modules/system-x11-amd.nix       
 			
             # X11 + Intel
-            ./system-modules/system-x11-intel.nix
+#            ./system-modules/system-x11-intel.nix
           ];
         };
       };
@@ -42,6 +40,7 @@
         sergeok = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
           modules = [
+		    ./home-modules/flatpak.nix
             ./home-modules/home.nix
             ./home-modules/home-packages.nix
             ./home-modules/home-x11.nix
