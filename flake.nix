@@ -12,25 +12,28 @@
   outputs = { self, nixpkgs, home-manager, ... }: 
     let
       theme = "nord";
-	in {
+    in {
       nixosConfigurations = {
         sergeok = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-		  pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
+          pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
           modules = [
             ./system-modules/system-config.nix
             ./system-modules/system-packages.nix
             ./system-modules/boot.nix
             ./system-modules/system-x11.nix
 
-		    ./hardware-modules/hardware-sergeok.nix
+            ./hardware-modules/hardware-sergeok.nix
+            
+            # X11 + NVIDIA
+#            ./hardware-modules/nvidia.nix
+#            ./system-modules/system-x11-nvidia.nix
+            
+            # X11 + AMD
+#            ./system-modules/system-x11-amd.nix       
 			
-			# X11 + NVIDIA
-		    #./hardware-modules/nvidia.nix
-		    #./system-modules/system-x11-nvidia.nix
-			
-			# X11 + AMD
-			./system-modules/system-x11-amd.nix
+            # X11 + Intel
+            ./system-modules/system-x11-intel.nix
           ];
         };
       };
@@ -42,7 +45,7 @@
             ./home-modules/home.nix
             ./home-modules/home-packages.nix
             ./home-modules/home-x11.nix
-			
+            
             ./home-modules/theme/${theme}/theme.nix
             ./home-modules/theme/${theme}/theme-x11.nix
           ];

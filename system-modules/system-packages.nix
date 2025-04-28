@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    home-manager
     zsh
 	xdg-desktop-portal
 	xdg-desktop-portal-gtk
@@ -15,7 +16,6 @@
 	lazydocker
 
     # Утилиты для работы с оборудованием и системой
-    config.boot.kernelPackages.nvidiaPackages.latest.settings
     smartmontools    # предоставляет smartctl (диагностика дисков)
     networkmanagerapplet   # управление сетями на системном уровне (Wi-Fi GUI)
 
@@ -28,6 +28,7 @@
     tree
     glxinfo
     wl-clipboard
+	pciutils
 
     # Мониторинг и диагностика на системном уровне
     btop

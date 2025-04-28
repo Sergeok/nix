@@ -63,4 +63,7 @@
   security.sudo.enable = true;
   security.polkit.enable = true;
   services.dbus.enable = true;
+  
+  # Настройка trim для SSD, чтобы он не терял скорость
+  services.fstrim.enable = true;
 }

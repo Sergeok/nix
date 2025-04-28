@@ -4,16 +4,19 @@ Open a terminal in the NixOS Live environment.
 
 ## Step 2: Disk Partitioning and Formatting
 
-Use `cfdisk` or `parted` to create:
+Use `cfdisk /dev/sdX` to create:
 
 - An EFI partition (512MB, type EF00)
-- A root partition (remaining space)
+- A root partition (remaining space) (label gpt)
+- A home partition (label gpt)
 
 Format the partitions:
 
 ```sh
+lsblk
 mkfs.fat -F32 /dev/sdX1       # EFI partition
 mkfs.ext4 /dev/sdX2           # Root partition
+mkfs.ext4 /dev/sdX3           # Home partition
 ```
 
 Mount them:
@@ -22,6 +25,7 @@ Mount them:
 mount /dev/sdX2 /mnt
 mkdir -p /mnt/boot
 mount /dev/sdX1 /mnt/boot
+mount /dev/sdX3 /mnt/home
 ```
 
 ## Step 3: Clone flake from GitHub
@@ -36,7 +40,7 @@ cd /mnt/etc/nixos
 
 ```sh
 nixos-generate-config --root /mnt
-cp /mnt/etc/nixos/hardware-configuration.nix /mnt/etc/nixos/hardware-modules/hardware-sergeok.nix
+cp hardware-configuration.nix hardware-modules/hardware-sergeok.nix
 git add .
 ```
 
@@ -55,7 +59,7 @@ reboot
 
 ```sh
 login sergeok
-cd /mnt/etc/nixos
+cd /etc/nixos
 sudo chown -R sergeok .
-nix run github:nix-community/home-manager -- switch --flake /etc/nixos#sergeok
+nix run github:nix-community/home-manager -- switch --flake .#sergeok
 ```

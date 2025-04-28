@@ -12,19 +12,10 @@
   
   services.xserver = {
     videoDrivers = [ "amdgpu" ];
-
-    deviceSection = ''
-      Section "Device"
-        Identifier "AMD"
-        Driver "amdgpu"
-        Option "TearFree" "true"
-      EndSection
-    '';
   };
-
-  hardware.opengl = {
+  
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 }

@@ -6,13 +6,92 @@ set $mod Mod4
 exec --no-startup-id feh --bg-fill ~/.wallpaper/wallpaper.png
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id dunst
-exec --no-startup-id polybar main
+exec --no-startup-id polybar bar
+exec --no-startup-id xbindkeys
 
 # --- KEYBINDS ---
-bindsym $mod+d exec rofi -show drun -theme ~/.config/rofi/config.rasi
-bindsym $mod+Shift+q kill
+# Скриншот всего экрана
+bindsym Alt+Print exec scrot ~/Pictures/screenshot-%Y-%m-%d-%H%M%S.png
+# Скриншот выделенной области
+bindsym Print exec scrot -s ~/Pictures/selection-%Y-%m-%d-%H%M%S.png
+
+bindsym $mod+d exec  rofi -show drun -theme ~/.config/rofi/config.rasi
+
+# Запуск терминала
+bindsym $mod+Return exec alacritty
+
+# Перезапустить i3 (reload)
+bindsym $mod+Shift+c reload
+# Перезапустить i3 полностью (restart)
 bindsym $mod+Shift+r restart
+# Убить текущий процесс активного окна
+bindsym $mod+Shift+q kill
+# Выход из сессии
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Выход из i3?' -b 'Да' 'i3-msg exit'"
+
+# УПРАВЛЕНИЕ ОКНАМИ
+
+# Перемещение фокуса
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Перемещение окон
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Режим разметки (tiling/stacking/tabbed)
+bindsym $mod+e layout toggle split
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+
+# Разделение по горизонтали / вертикали
+bindsym $mod+v split v
+bindsym $mod+b split h
+
+# Плавающее окно
+bindsym $mod+Shift+space floating toggle
+
+# Полноэкранный режим
 bindsym $mod+f fullscreen toggle
+
+# Перемещение окон в плавающем режиме
+floating_modifier $mod
+
+# Переключение рабочих пространств (1-9)
+set $ws1 "1: "
+set $ws2 "2: "
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+
+# Перемещение окон между рабочими пространствами
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
 
 # --- GAPS SETTINGS ---
 default_border pixel 3
