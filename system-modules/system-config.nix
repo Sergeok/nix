@@ -12,7 +12,7 @@
   # Раскладка клавиатуры в консоли
   console.keyMap = "us";
 
-  # Поддержка камеры Logitech (Logitech C920/схожая)
+  # Поддержка камеры Logitech (Logitech C920/схожая)   TODO это в хардварь; реформировать модуль
   hardware.uinput.enable = true;
   services.udev.extraRules = ''
     ATTR{idVendor}=="046d", ATTR{idProduct}=="082d", GROUP="video", MODE="0660"
@@ -66,4 +66,7 @@
   
   # Настройка trim для SSD, чтобы он не терял скорость
   services.fstrim.enable = true;
+  
+  networking.networkmanager.enable = true;
+  networking.hostName = "sergey-nix";
 }

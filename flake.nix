@@ -5,9 +5,10 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+	nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: 
+  outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }: 
     let
       theme = "nord";
     in {
@@ -47,6 +48,8 @@
             
             ./home-modules/theme/${theme}/theme.nix
             ./home-modules/theme/${theme}/theme-x11.nix
+			
+			nix-flatpak.homeManagerModules.nix-flatpak
           ];
         };
       };
