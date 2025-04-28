@@ -11,14 +11,9 @@
   environment.systemPackages = [
     config.boot.kernelPackages.nvidiaPackages.latest.settings
   ];
-  
-  # Включаем полную компоновку (устранение tearing)
-  environment.etc."X11/xorg.conf.d/10-nvidia.conf".text = ''
-    Section "Screen"
-      Identifier "Screen0"
-      Option "metamodes" "nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
-    EndSection
-  '';
+
+  # Специально отключаем модули для встроенной графики
+  boot.blacklistedKernelModules = [ "i915" ];
 }
 #  mkDriver {
 #    version = "570.133.07";

@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, flake-inputs, ... }:
 
 {
+  imports = [ flake-inputs.flatpaks.homeManagerModules.nix-flatpak ];
+
   services.flatpak.packages = [
     "com.bitwarden.desktop"
 	"org.telegram.desktop"
