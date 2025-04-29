@@ -42,7 +42,7 @@
           pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
           extraSpecialArgs = {
             flake-inputs = {
-              inherit nixpkgs home-manager nix-flatpak;
+              inherit nixpkgs home-manager flatpaks;
             };
           };
           modules = [
@@ -53,8 +53,6 @@
             
             ./home-modules/theme/${theme}/theme.nix
             ./home-modules/theme/${theme}/theme-x11.nix
-
-            nix-flatpak.homeManagerModules.nix-flatpak
           ];
         };
       };
