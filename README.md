@@ -2,30 +2,13 @@
 
 Open a terminal in the NixOS Live environment.
 
-## Step 2: Disk Partitioning and Formatting
+## Step 2: Disk Partitioning (EMPTY_DISK - sys+boot; HOME_DISK - home)
 
-Use `cfdisk /dev/sdX` to create:
-
-- An EFI partition (512MB, type EF00)
-- A root partition (remaining space) (label gpt)
-- A home partition (label gpt)
-
-Format the partitions:
+Use only EMPTY_DISK for laptop Installation
 
 ```sh
-lsblk
-mkfs.fat -F32 /dev/sdX1       # EFI partition
-mkfs.ext4 /dev/sdX2           # Root partition
-mkfs.ext4 /dev/sdX3           # Home partition
-```
-
-Mount them:
-
-```sh
-mount /dev/sdX2 /mnt
-mkdir -p /mnt/boot
-mount /dev/sdX1 /mnt/boot
-mount /dev/sdX3 /mnt/home
+export EMPTY_DISK=/dev/sdX 
+export HOME_DISK=/dev/sdY
 ```
 
 ## Step 3: Clone flake from GitHub
@@ -44,10 +27,10 @@ cp hardware-configuration.nix hardware-modules/hardware-sergeok.nix
 git add .
 ```
 
-## Step 5: Install the System using the flake
+## Step 5: Install the System using the flake with -pc or -laptop
 
 ```sh
-nixos-install --flake .#sergeok
+nixos-install --flake .#sergeok-laptop
 ```
 
 ## Step 6: Reboot

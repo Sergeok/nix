@@ -13,7 +13,7 @@
       theme = "nord";
     in {
       nixosConfigurations = {
-        sergeok = nixpkgs.lib.nixosSystem {
+        sergeok-pc = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
           modules = [
@@ -23,13 +23,25 @@
             ./system-modules/system-x11.nix
 
             ./hardware-modules/hardware-sergeok.nix
+			./hardware-modules/empty-and-home-disks.nix
             
             # X11 + NVIDIA
-#            ./hardware-modules/nvidia.nix
-#            ./system-modules/system-x11-nvidia.nix
-            
-            # X11 + AMD
-#            ./system-modules/system-x11-amd.nix       
+            ./hardware-modules/nvidia.nix
+            ./system-modules/system-x11-nvidia.nix
+          ];
+        };
+		
+		sergeok-laptop = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
+          modules = [
+            ./system-modules/system-config.nix
+            ./system-modules/system-packages.nix
+            ./system-modules/boot.nix
+            ./system-modules/system-x11.nix
+
+            ./hardware-modules/hardware-sergeok.nix
+			./hardware-modules/empty-disk.nix
       
             # X11 + Intel
             ./system-modules/system-x11-intel.nix
